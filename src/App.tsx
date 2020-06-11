@@ -22,6 +22,7 @@ import './theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
+    
     <h2>This works</h2>
   </IonApp>
 );
