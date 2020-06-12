@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonApp } from '@ionic/react';
+import {menu} from './components/menu'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -22,8 +23,8 @@ import './theme/variables.css';
 
 const App: React.FC = () => (
   <IonApp>
-    
-    <h2>This works</h2>
+    {/* <h2>This works</h2> */}
+    <menu/>
   </IonApp>
 );
 
