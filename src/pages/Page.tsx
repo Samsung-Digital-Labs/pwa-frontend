@@ -11,8 +11,8 @@ const Page: React.FC = () => {
   return (
     <IonPage>
     {/* Header and menu button */}
-      <IonHeader>
-        <IonToolbar>
+      <IonHeader >
+        <IonToolbar color="dark">
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
@@ -20,6 +20,7 @@ const Page: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
+      {/* Contains the actual content */}
       <IonContent>
         {/* Just for IOS support adding condense header*/}
         <IonHeader collapse="condense">
