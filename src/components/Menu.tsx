@@ -12,9 +12,11 @@ import {
   
   import React from 'react';
   import { useLocation } from 'react-router-dom';
-  import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+  import { bookmarkOutline, paperPlaneOutline, logOutOutline, logOut, bookOutline, book, handRightOutline, handRight, fileTrayFullOutline, fileTrayFull, paperPlane, chatboxEllipses, chatboxEllipsesOutline } from 'ionicons/icons';
   import './Menu.css';
   
+  // Abstract class/interface for
+  // information about each page
   interface AppPage {
     url: string;
     iosIcon: string;
@@ -22,46 +24,48 @@ import {
     title: string;
   }
   
+  // Declaring all the app pages
   const appPages: AppPage[] = [
     {
-      title: 'Inbox',
-      url: '/page/Inbox',
-      iosIcon: mailOutline,
-      mdIcon: mailSharp
+      title: 'Classrooms',
+      url: '/page/classrooms',
+      iosIcon: bookOutline,
+      mdIcon: book
     },
     {
-      title: 'Outbox',
-      url: '/page/Outbox',
+      title: 'Join',
+      url: '/page/join',
       iosIcon: paperPlaneOutline,
-      mdIcon: paperPlaneSharp
+      mdIcon: paperPlane
     },
     {
-      title: 'Favorites',
-      url: '/page/Favorites',
-      iosIcon: heartOutline,
-      mdIcon: heartSharp
+      title: 'Assignments',
+      url: '/page/assignments',
+      iosIcon: fileTrayFullOutline,
+      mdIcon: fileTrayFull
     },
     {
-      title: 'Archived',
-      url: '/page/Archived',
-      iosIcon: archiveOutline,
-      mdIcon: archiveSharp
+      title: 'Chat',
+      url: '/page/chat',
+      iosIcon: chatboxEllipsesOutline,
+      mdIcon: chatboxEllipses
     },
     {
-      title: 'Trash',
-      url: '/page/Trash',
-      iosIcon: trashOutline,
-      mdIcon: trashSharp
+      title: 'Queries',
+      url: '/page/queries',
+      iosIcon: handRightOutline,
+      mdIcon: handRight
     },
     {
-      title: 'Spam',
-      url: '/page/Spam',
-      iosIcon: warningOutline,
-      mdIcon: warningSharp
+      title: 'Logout',
+      url: '/page/logout',
+      iosIcon: logOutOutline,
+      mdIcon: logOut
     }
   ];
   
-  const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  // Labels TODO
+  const labels = ['LABEL1', 'LABEL2', 'LABEL3', 'LABEL4', 'LABEL5', 'Reminders'];
   
   const Menu: React.FC = () => {
     const location = useLocation();
@@ -70,8 +74,8 @@ import {
       <IonMenu contentId="main" type="overlay">
         <IonContent>
           <IonList id="inbox-list">
-            <IonListHeader>Inbox</IonListHeader>
-            <IonNote>hi@ionicframework.com</IonNote>
+            <IonListHeader>BlackBoard</IonListHeader>
+            <IonNote>user@somewhere.com</IonNote>
             {appPages.map((appPage, index) => {
               return (
                 <IonMenuToggle key={index} autoHide={false}>

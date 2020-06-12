@@ -10,6 +10,7 @@ const Page: React.FC = () => {
 
   return (
     <IonPage>
+    {/* Header and menu button */}
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -20,6 +21,7 @@ const Page: React.FC = () => {
       </IonHeader>
 
       <IonContent>
+        {/* Just for IOS support adding condense header*/}
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">{name}</IonTitle>
