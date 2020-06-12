@@ -12,7 +12,7 @@ import {
   
   import React from 'react';
   import { useLocation } from 'react-router-dom';
-  import { bookmarkOutline, paperPlaneOutline, logOutOutline, logOut, bookOutline, book, handRightOutline, handRight, fileTrayFullOutline, fileTrayFull, paperPlane, chatboxEllipses, chatboxEllipsesOutline } from 'ionicons/icons';
+  import { bookmarkOutline, paperPlaneOutline, logOutOutline, logOut, bookOutline, book, handRightOutline, handRight, fileTrayFullOutline, fileTrayFull, paperPlane, chatboxEllipses, chatboxEllipsesOutline, colorFill } from 'ionicons/icons';
   import './Menu.css';
   
   // Abstract class/interface for
