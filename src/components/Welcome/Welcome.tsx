@@ -1,6 +1,7 @@
 import React from 'react';
 import { IonApp } from '@ionic/react';
-const welcome: React.FC = () => {
+
+const Welcome: React.FC = () => {
 
   return (
     <IonApp>
@@ -12,4 +13,4 @@ const welcome: React.FC = () => {
   );
 };
 
-export default welcome;
+export default Welcome;
