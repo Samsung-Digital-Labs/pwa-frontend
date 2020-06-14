@@ -16,39 +16,18 @@ const Welcome: React.FC = () => {
         <IonGrid>
           <IonRow>
             <IonCol sizeSm="6" sizeXs="12">
-              <Link to="/studentlogin" className="noUnderline">
+              <Link to="/login" className="noUnderline">
                 <IonButton color="danger" expand="block">
                   <IonIcon slot="start" icon={people} />
-                  Student Login
+                  Login
                 </IonButton>
               </Link>
             </IonCol>
             <IonCol sizeSm="6" sizeXs="12">
-              <Link to="/studentsignup" className="noUnderline">
+              <Link to="/signup" className="noUnderline">
                 <IonButton color="danger" expand="block">
                 <IonIcon slot="start" icon={personAdd} />
-                  Student Signup
-                </IonButton>
-              </Link>
-            </IonCol>
-          </IonRow>
-
-          <br></br>
-          
-          <IonRow>
-            <IonCol sizeSm="6" sizeXs="12">
-              <Link to="/teacherlogin" className="noUnderline">
-                <IonButton color="danger" expand="block">
-                  <IonIcon slot="start" icon={people} />
-                  Teacher Login
-                </IonButton>
-              </Link>
-            </IonCol>
-            <IonCol sizeSm="6" sizeXs="12">
-              <Link to="/teachersignup" className="noUnderline">
-                <IonButton color="danger" expand="block">
-                  <IonIcon slot="start" icon={personAdd} />
-                  Teacher SignUp
+                  Signup
                 </IonButton>
               </Link>
             </IonCol>
