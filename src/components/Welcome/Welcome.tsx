@@ -1,11 +1,16 @@
 import React from 'react';
 import {IonGrid,IonRow,IonCol, IonButton, IonIcon} from '@ionic/react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import {people,personAdd} from 'ionicons/icons';
 
-const Welcome: React.FC = () => {
+import {connect} from 'react-redux';
 
+const Welcome: React.FC<{isUserLoggedIn:boolean,history:any}> = (props) => {
+
+  if(props.isUserLoggedIn){
+    return <Redirect to="/home"></Redirect>
+  }
   return (
       <div className="ion-text-center">
         <h1>Welcome To Our App</h1>
@@ -37,4 +42,10 @@ const Welcome: React.FC = () => {
   );
 };
 
-export default Welcome;
+const mapStateToProps=(state:any)=>{
+  return{
+      isUserLoggedIn:state.loadUserReducer.isUserLoggedIn
+  }
+}
+
+export default connect(mapStateToProps,null)(Welcome);

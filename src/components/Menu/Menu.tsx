@@ -14,6 +14,9 @@ import {
   import { useLocation } from 'react-router-dom';
   import { bookmarkOutline, paperPlaneOutline, logOutOutline, logOut, bookOutline, book, handRightOutline, handRight, fileTrayFullOutline, fileTrayFull, paperPlane, chatboxEllipses, chatboxEllipsesOutline, colorFill } from 'ionicons/icons';
   import './Menu.css';
+
+  import {connect} from 'react-redux';
+  import * as actions from '../../actions/actions';
   
   // Abstract class/interface for
   // information about each page
@@ -56,20 +59,19 @@ import {
       iosIcon: handRightOutline,
       mdIcon: handRight
     },
-    {
-      title: 'Logout',
-      url: '/page/logout',
-      iosIcon: logOutOutline,
-      mdIcon: logOut
-    }
   ];
-  
+
   // Labels TODO
   const labels = ['LABEL1', 'LABEL2', 'LABEL3', 'LABEL4', 'LABEL5', 'Reminders'];
   
-  const Menu: React.FC = () => {
+  const Menu: React.FC<{loadUser:any}> = (props) => {
     const location = useLocation();
   
+
+    const logout=()=>{
+      props.loadUser(false);
+    }
+
     return (
       <IonMenu contentId="main" type="overlay" color = "dark">
         <IonContent color = "dark">
@@ -86,6 +88,14 @@ import {
                 </IonMenuToggle>
               );
             })}
+
+              <IonMenuToggle  autoHide={false} >
+                  <IonItem color = "dark" className="pointer" onClick={logout}>
+                    <IonIcon  slot="start" ios={logOutOutline} md={logOut}/>
+                    <IonLabel>Logout</IonLabel>
+                  </IonItem>
+                </IonMenuToggle>
+
           </IonList>
   
           <IonList id="labels-list" >
@@ -102,5 +112,13 @@ import {
     );
   };
   
-  export default Menu;
+  const mapDispatchToProps=(dispatch:any)=>{
+      return{
+          loadUser:(isUserLoggedIn:boolean)=>{
+              dispatch(actions.loadUser(isUserLoggedIn))
+          }
+      }
+  }
+
+  export default connect(null,mapDispatchToProps)(Menu);
   
