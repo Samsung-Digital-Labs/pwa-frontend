@@ -1,66 +1,81 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import { IonItem, IonLabel, IonInput, IonButton, IonGrid, IonRow, IonCol } from '@ionic/react';
-
 import * as actions from '../../actions/actions';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 
 interface Props{
     history:any,
     isUserLoggedIn:boolean,
-    loadUser:any
+    loadUser:any,
 }
 
 interface State{
     email:string,
-    password:string
+    password:string,
+    firstName:string,
+    lastName:string
 }
 
-class Login extends Component<Props,State>{
+
+class Signup extends Component<Props,State>{
+    
     constructor(props:Props){
         super(props);
-        this.state={
-            email:"",
-            password:""
+        this.state = {
+            email:'',
+            password:'',
+            firstName:'',
+            lastName:''
         }
     }
 
-    login=()=>{
+    signup=()=>{
         const user={
+            firstName:this.state.firstName,
+            lastName:this.state.lastName,
             email:this.state.email,
             password:this.state.password
         }
+        // console.log("user is",user);
 
         // api request
-        
         if(true){
             this.props.loadUser(true);
-
-            // console.log(JSON.parse(JSON.stringify(this.props)))
-            // this.props.history.push("/home");
         }
         else{
-            window.alert("wrong credentials!");
+            window.alert("error");
         }
     }
-    
+
     render(){
-        // console.log("email is "+this.state.email);
-        // console.log("pass is "+this.state.password);
-
-        // console.log("user logged in",this.props.isUserLoggedIn);
-
+        // console.log("isUserLoggedIn",this.props.isUserLoggedIn);
         if(this.props.isUserLoggedIn){
             return <Redirect to="/home"></Redirect>
         }
         else{
             return(
                 <div className="ion-text-center">
-                    <h1>Login</h1>
+                    <h1>Sign Up</h1>
                     <br></br>
                     <IonGrid>
                         <IonRow>
-                            <IonCol size="12">
+                            <IonCol sizeSm="6" sizeXs="12">
+                                <IonItem>
+                                    <IonLabel position="floating">First Name</IonLabel>
+                                    <IonInput value={this.state.firstName} onIonChange={ e => {this.setState({firstName:e.detail.value!})} }></IonInput>
+                                </IonItem>
+                            </IonCol>                            
+                            <IonCol sizeSm="6" sizeXs="12">
+                                <IonItem>
+                                    <IonLabel position="floating">Last Name</IonLabel>
+                                    <IonInput value={this.state.lastName} onIonChange={ e => {this.setState({lastName:e.detail.value!})} }></IonInput>
+                                </IonItem>
+                            </IonCol>
+                        </IonRow>
+                        <IonRow>
+                            <IonCol>
                                 <IonItem>
                                     <IonLabel position="floating">Email</IonLabel>
                                     <IonInput type="email" value={this.state.email} onIonChange={ e => {this.setState({email:e.detail.value!})} }></IonInput>
@@ -68,23 +83,24 @@ class Login extends Component<Props,State>{
                             </IonCol>
                         </IonRow>
                         <IonRow>
-                            <IonCol size="12">
+                            <IonCol>
                                 <IonItem>
                                     <IonLabel position="floating">Password</IonLabel>
                                     <IonInput type="password" value={this.state.password} onIonChange={ e => {this.setState({password:e.detail.value!})} }></IonInput>
                                 </IonItem>
-                            </IonCol>   
-                        </IonRow>                     
+                            </IonCol>
+                        </IonRow>
                     </IonGrid>
                     <br></br>
-                    <IonButton onClick={this.login}>Login</IonButton>
+                    <IonButton onClick={this.signup}>Sign Up</IonButton>
                     <br></br>
-                    <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+                    <p>Already have an account? <Link to="/login">Login</Link></p>
                 </div>
             );
         }
     }
 }
+
 const mapStateToProps=(state:any)=>{
     return{
         isUserLoggedIn:state.loadUserReducer.isUserLoggedIn
@@ -99,5 +115,4 @@ const mapDispatchToProps=(dispatch:any)=>{
     }
 }
 
-
-export default connect(mapStateToProps,mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(Signup);
