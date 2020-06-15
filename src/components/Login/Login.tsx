@@ -26,7 +26,7 @@ class Login extends Component<Props,State>{
     }
 
     login=()=>{
-        const user={
+        const user = { 
             email:this.state.email,
             password:this.state.password
         }
@@ -42,7 +42,7 @@ class Login extends Component<Props,State>{
         else{
             window.alert("wrong credentials!");
         }
-    }
+ }
     
     render(){
         // console.log("email is "+this.state.email);
@@ -87,6 +87,5 @@ const mapDispatchToProps=(dispatch:any)=>{
         }
     }
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(Login);

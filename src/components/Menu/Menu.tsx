@@ -80,7 +80,7 @@ import {
             <IonNote color = "dark">user@somewhere.com</IonNote>
             {appPages.map((appPage, index) => {
               return (
-                <IonMenuToggle  key={index} autoHide={false} >
+                <IonMenuToggle key={index} autoHide={false} >
                   <IonItem color = "dark" className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
                     <IonIcon  slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
                     <IonLabel>{appPage.title}</IonLabel>
